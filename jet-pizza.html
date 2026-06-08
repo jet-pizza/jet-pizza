@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Jet Pizza - Pizzeria style américain à Antony. Pizzas généreuses, livraison rapide, ouvert 7/7. Commandez au 01 40 96 01 01.">
+<title>Jet Pizza · Pizzas style américain à Antony</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--rosso:#E63946;--rosso-deep:#B5232F;--verde:#1D3557;--cream:#FFF8E7;--cream-warm:#FFE9A8;--charcoal:#0D1B2A;--charcoal-soft:#1B263B;--gold:#F9C846;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 5%;background:rgba(26,20,16,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(212,162,74,0.15);transition:all 0.3s ease;}
+.nav-logo{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:1.7rem;color:var(--cream);letter-spacing:0.5px;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:38px;list-style:none;}
+.nav-links a{color:var(--cream);text-decoration:none;font-weight:500;font-size:0.92rem;text-transform:uppercase;letter-spacing:1.5px;position:relative;transition:color 0.3s;}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--gold);transition:width 0.3s ease;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{width:100%;}
+.nav-call{background:var(--rosso);color:white;padding:11px 22px;border-radius:50px;text-decoration:none;font-weight:600;font-size:0.9rem;display:flex;align-items:center;gap:8px;transition:all 0.3s ease;box-shadow:0 4px 14px rgba(200,16,46,0.4);}
+.nav-call:hover{background:var(--rosso-deep);transform:translateY(-2px);}
+.menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:120px 5% 80px;}
+.hero-bg{position:absolute;inset:0;background-image:url('images/hero.jpg');background-size:cover;background-position:center;z-index:0;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,20,16,0.85) 0%,rgba(26,20,16,0.65) 50%,rgba(139,10,31,0.75) 100%);z-index:1;}
+.hero-content{text-align:center;z-index:2;max-width:1100px;animation:heroFadeIn 1.2s ease-out;position:relative;}
+@keyframes heroFadeIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.hero-tag{display:inline-block;color:var(--gold);font-family:'Caveat',cursive;font-size:1.7rem;margin-bottom:12px;transform:rotate(-2deg);letter-spacing:1px;}
+.hero h1{font-family:'Playfair Display',serif;font-weight:900;font-style:italic;font-size:clamp(3.5rem,11vw,8.5rem);line-height:0.9;color:var(--cream);margin-bottom:24px;letter-spacing:-2px;text-shadow:0 4px 30px rgba(0,0,0,0.4);}
+.hero h1 .accent{color:var(--gold);display:block;font-size:0.55em;letter-spacing:8px;font-style:normal;font-weight:400;text-transform:uppercase;margin-top:12px;}
+.hero-italian-flag{display:inline-flex;gap:4px;margin-bottom:24px;}
+.hero-italian-flag span{width:18px;height:30px;border-radius:2px;}
+.hero-italian-flag span:nth-child(1){background:#009246;}
+.hero-italian-flag span:nth-child(2){background:#F1F1F1;}
+.hero-italian-flag span:nth-child(3){background:#CE2B37;}
+.hero p{font-size:clamp(1rem,1.6vw,1.25rem);color:rgba(251,245,233,0.9);max-width:620px;margin:0 auto 40px;font-weight:300;}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-primary,.btn-secondary{padding:18px 38px;border-radius:50px;text-decoration:none;font-weight:600;font-size:1rem;text-transform:uppercase;letter-spacing:1.5px;transition:all 0.3s ease;display:inline-flex;align-items:center;gap:10px;}
+.btn-primary{background:var(--rosso);color:white;box-shadow:0 8px 30px rgba(200,16,46,0.5);}
+.btn-primary:hover{background:var(--rosso-deep);transform:translateY(-3px);}
+.btn-secondary{background:rgba(251,245,233,0.1);backdrop-filter:blur(10px);color:var(--cream);border:2px solid rgba(251,245,233,0.4);}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+.hero-info{margin-top:60px;display:flex;justify-content:center;gap:50px;flex-wrap:wrap;color:rgba(251,245,233,0.75);font-size:0.85rem;text-transform:uppercase;letter-spacing:2px;}
+.hero-info-item{display:flex;align-items:center;gap:8px;}
+.hero-info-item::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;}
+.about-strip{background:var(--cream);padding:80px 5%;text-align:center;position:relative;}
+.about-strip::before,.about-strip::after{content:'';position:absolute;width:100%;height:25px;left:0;background-image:repeating-linear-gradient(45deg,var(--rosso) 0,var(--rosso) 12px,var(--cream) 12px,var(--cream) 24px,var(--verde) 24px,var(--verde) 36px,var(--cream) 36px,var(--cream) 48px);}
+.about-strip::before{top:0;}
+.about-strip::after{bottom:0;}
+.about-content{max-width:900px;margin:0 auto;padding:30px 0;}
+.about-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.5rem,3.5vw,2.4rem);line-height:1.4;color:var(--charcoal);margin-bottom:24px;}
+.about-quote .highlight{color:var(--rosso);font-weight:700;}
+.about-sign{font-family:'Caveat',cursive;font-size:1.5rem;color:var(--verde);}
+.section-title{text-align:center;margin-bottom:60px;padding:0 5%;}
+.section-tag{color:var(--rosso);font-family:'Caveat',cursive;font-size:1.6rem;margin-bottom:8px;display:block;}
+.section-title h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.2rem,5.5vw,4rem);line-height:1;color:var(--charcoal);letter-spacing:-1px;}
+.section-title h2 em{font-style:italic;color:var(--verde);}
+.menu-section{padding:100px 0;background:var(--cream);}
+.filters{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:0 5% 50px;max-width:1200px;margin:0 auto;}
+.filter-btn{background:transparent;border:2px solid var(--charcoal);color:var(--charcoal);padding:10px 22px;border-radius:50px;cursor:pointer;font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;font-family:inherit;transition:all 0.3s ease;}
+.filter-btn:hover{background:var(--charcoal);color:var(--cream);}
+.filter-btn.active{background:var(--rosso);border-color:var(--rosso);color:white;}
+.menu-category{max-width:1300px;margin:0 auto 80px;padding:0 5%;}
+.category-header{display:flex;align-items:center;gap:24px;margin-bottom:40px;flex-wrap:wrap;}
+.category-header h3{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--charcoal);white-space:nowrap;}
+.category-header .line{flex:1;height:2px;background:linear-gradient(to right,var(--rosso),transparent);min-width:100px;}
+.category-header .badge{background:var(--charcoal);color:var(--cream);padding:6px 16px;border-radius:4px;font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;font-weight:600;}
+.pizzas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;}
+.pizza-card{background:white;border-radius:18px;overflow:hidden;transition:all 0.4s ease;border:1px solid rgba(26,20,16,0.06);position:relative;display:flex;flex-direction:column;}
+.pizza-card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(26,20,16,0.18);}
+.pizza-image{position:relative;height:220px;overflow:hidden;background:#2b231c;}
+.pizza-image img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
+.pizza-card:hover .pizza-image img{transform:scale(1.08);}
+.pizza-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.35) 0%,transparent 50%);pointer-events:none;}
+.pizza-badge{position:absolute;top:16px;left:16px;background:rgba(255,255,255,0.95);color:var(--rosso);padding:5px 12px;border-radius:50px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;z-index:2;}
+.pizza-badge.cream{color:var(--verde);}
+.pizza-badge.signature{background:var(--gold);color:var(--charcoal);}
+.pizza-content{padding:24px;display:flex;flex-direction:column;flex:1;}
+.pizza-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.5rem;color:var(--charcoal);margin-bottom:6px;letter-spacing:-0.3px;}
+.pizza-desc{font-size:0.9rem;color:rgba(26,20,16,0.65);line-height:1.5;min-height:44px;margin-bottom:18px;flex:1;}
+.pizza-prices{display:flex;gap:8px;justify-content:space-between;border-top:1px dashed rgba(26,20,16,0.15);padding-top:16px;}
+.price-item{flex:1;text-align:center;padding:6px 4px;border-right:1px solid rgba(26,20,16,0.08);}
+.price-item:last-child{border-right:none;}
+.price-size{font-size:0.65rem;color:rgba(26,20,16,0.5);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:2px;display:block;font-weight:600;}
+.price-cm{font-size:0.6rem;color:rgba(26,20,16,0.4);display:block;margin-bottom:4px;}
+.price-val{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--rosso);}
+.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:24px;}
+.item-card{background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(26,20,16,0.06);transition:all 0.3s ease;display:flex;flex-direction:column;}
+.item-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(26,20,16,0.12);}
+.item-image{height:170px;overflow:hidden;background:#2b231c;}
+.item-image img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
+.item-card:hover .item-image img{transform:scale(1.06);}
+.item-content{padding:22px;flex:1;display:flex;flex-direction:column;}
+.item-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;}
+.item-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;color:var(--charcoal);}
+.item-price{font-family:'Playfair Display',serif;font-weight:700;font-size:1.25rem;color:var(--rosso);white-space:nowrap;}
+.item-desc{font-size:0.86rem;color:rgba(26,20,16,0.65);line-height:1.5;}
+.info-box{background:linear-gradient(135deg,var(--charcoal) 0%,var(--charcoal-soft) 100%);color:var(--cream);padding:32px;border-radius:16px;margin:24px 0 40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.info-box-icon{font-size:2.2rem;}
+.info-box-text{flex:1;min-width:250px;}
+.info-box-text strong{color:var(--gold);font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;display:block;margin-bottom:4px;}
+.info-box-text p{font-size:0.9rem;color:rgba(251,245,233,0.75);}
+.promos{background:linear-gradient(135deg,var(--charcoal) 0%,var(--charcoal-soft) 100%);padding:100px 5%;color:var(--cream);position:relative;overflow:hidden;}
+.promos::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(200,16,46,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(212,162,74,0.1) 0%,transparent 50%);}
+.promos-content{position:relative;z-index:2;max-width:1300px;margin:0 auto;}
+.promos .section-tag{color:var(--gold);}
+.promos .section-title h2{color:var(--cream);}
+.promos .section-title h2 em{color:var(--gold);}
+.menus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:60px;}
+.menu-card{background:rgba(251,245,233,0.06);border:1px solid rgba(212,162,74,0.2);border-radius:16px;padding:30px;text-align:center;transition:all 0.4s ease;backdrop-filter:blur(10px);}
+.menu-card:hover{transform:translateY(-8px);border-color:var(--gold);background:rgba(251,245,233,0.1);}
+.menu-card-name{font-family:'Caveat',cursive;font-size:1.5rem;color:var(--gold);margin-bottom:4px;}
+.menu-card-title{font-family:'Playfair Display',serif;font-weight:900;font-size:2rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;}
+.menu-card-desc{font-size:0.9rem;color:rgba(251,245,233,0.75);line-height:1.6;margin-bottom:24px;min-height:80px;}
+.menu-card-price{font-family:'Playfair Display',serif;font-weight:900;font-size:2.5rem;color:var(--rosso);}
+.menu-card-price small{font-size:1.2rem;color:var(--gold);}
+.promo-banners{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.promo-banner{background:var(--rosso);padding:36px;border-radius:16px;text-align:center;position:relative;overflow:hidden;}
+.promo-banner.green{background:var(--verde);}
+.promo-banner::before{content:'7/7';position:absolute;top:16px;right:20px;background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:50px;font-size:0.75rem;font-weight:700;letter-spacing:1px;}
+.promo-banner h4{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;margin-bottom:8px;text-transform:uppercase;letter-spacing:1.5px;}
+.promo-banner p{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.4rem,2.8vw,2rem);line-height:1.1;}
+.promo-banner p span{color:var(--gold);font-style:italic;}
+.promo-banner small{display:block;margin-top:14px;font-size:0.7rem;opacity:0.7;}
+.contact{padding:100px 5%;background:var(--cream-warm);text-align:center;}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;max-width:1100px;margin:0 auto 50px;}
+.contact-card{background:white;padding:36px 24px;border-radius:16px;transition:all 0.3s ease;border-top:4px solid var(--rosso);}
+.contact-card:nth-child(2){border-top-color:var(--verde);}
+.contact-card:nth-child(3){border-top-color:var(--gold);}
+.contact-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(26,20,16,0.1);}
+.contact-icon{width:60px;height:60px;background:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.6rem;}
+.contact-card h3{font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;margin-bottom:12px;color:var(--charcoal);}
+.contact-card p{color:rgba(26,20,16,0.7);font-size:0.95rem;line-height:1.6;}
+.contact-card a{color:var(--rosso);text-decoration:none;font-weight:600;font-size:1.1rem;}
+.contact-card a:hover{text-decoration:underline;}
+.big-call{background:var(--rosso);color:white;padding:60px 40px;border-radius:24px;max-width:800px;margin:0 auto;text-align:center;box-shadow:0 20px 60px rgba(200,16,46,0.3);position:relative;overflow:hidden;}
+.big-call::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,0.15) 0%,transparent 50%);}
+.big-call h3{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:8px;position:relative;}
+.big-call .phone-number{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,4.5rem);letter-spacing:4px;display:block;margin:12px 0;color:white;text-decoration:none;position:relative;}
+.big-call .phone-number:hover{color:var(--gold);}
+.big-call p{font-size:1rem;opacity:0.9;position:relative;}
+footer{background:var(--charcoal);color:var(--cream);padding:60px 5% 30px;text-align:center;}
+.footer-logo{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:2rem;margin-bottom:8px;}
+.footer-logo span{color:var(--gold);}
+.footer-tag{font-family:'Caveat',cursive;font-size:1.3rem;color:var(--gold);margin-bottom:32px;}
+.footer-info{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-bottom:32px;font-size:0.9rem;color:rgba(251,245,233,0.7);}
+.footer-bottom{border-top:1px solid rgba(251,245,233,0.1);padding-top:24px;font-size:0.8rem;color:rgba(251,245,233,0.5);}
+.halal-badge{display:inline-block;background:var(--verde);color:white;padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;letter-spacing:1px;margin:0 8px;}
+.floating-call{position:fixed;bottom:24px;right:24px;background:var(--rosso);color:white;width:64px;height:64px;border-radius:50%;display:none;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 30px rgba(200,16,46,0.5);z-index:999;font-size:1.6rem;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(200,16,46,0.5);}50%{box-shadow:0 8px 30px rgba(200,16,46,0.5),0 0 0 16px rgba(200,16,46,0);}}
+@media(max-width:768px){.nav-links{display:none;}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--charcoal);padding:24px;gap:20px;}.menu-toggle{display:block;}.nav-call{padding:9px 16px;font-size:0.8rem;}.nav-logo{font-size:1.4rem;}.hero-info{gap:20px;}.hero-info-item{font-size:0.7rem;}.promo-banners{grid-template-columns:1fr;}.floating-call{display:flex;}.pizzas-grid{grid-template-columns:1fr;}.pizza-prices{gap:4px;}.footer-info{flex-direction:column;gap:12px;}}
+@media(max-width:480px){.hero{padding:100px 5% 60px;}.pizza-content,.item-content{padding:20px;}.menu-card{padding:24px;}.big-call{padding:40px 24px;}}
+
+/* ===== DARK MODE ===== */
+body.dark{--cream:#0F0B08;--cream-warm:#1A1410;--charcoal:#FBF5E9;--charcoal-soft:#F4E9D2;}
+body.dark .pizza-card,body.dark .item-card,body.dark .contact-card{background:#1F1814;border-color:rgba(212,162,74,0.15);}
+body.dark .pizza-name,body.dark .item-name,body.dark .contact-card h3{color:#FBF5E9;}
+body.dark .section-title h2{color:#FBF5E9;}
+body.dark .pizza-desc,body.dark .item-desc,body.dark .contact-card p{color:rgba(251,245,233,0.65);}
+body.dark .filter-btn{border-color:rgba(251,245,233,0.4);color:#FBF5E9;}
+body.dark .filter-btn:hover{background:rgba(251,245,233,0.1);color:#FBF5E9;}
+body.dark .about-quote{color:#FBF5E9;}
+body.dark .pizza-prices{border-top-color:rgba(251,245,233,0.15);}
+body.dark .price-item{border-right-color:rgba(251,245,233,0.08);}
+body.dark .price-size{color:rgba(251,245,233,0.5);}
+body.dark .category-header h3{color:#FBF5E9;}
+
+/* ===== LOADER ===== */
+.loader{position:fixed;inset:0;background:#1A1410;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s ease,visibility 0.5s ease;}
+.loader.hidden{opacity:0;visibility:hidden;}
+.loader-pizza{width:80px;height:80px;border:6px solid rgba(249,200,70,0.2);border-top-color:#E63946;border-right-color:#F9C846;border-radius:50%;animation:loaderSpin 1s linear infinite;margin-bottom:24px;}
+@keyframes loaderSpin{to{transform:rotate(360deg);}}
+.loader-text{font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:#F9C846;text-transform:uppercase;letter-spacing:3px;font-style:normal;margin-bottom:8px;}
+.loader-subtext{color:rgba(251,245,233,0.6);font-size:0.85rem;text-transform:uppercase;letter-spacing:3px;}
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(to right,#E63946,#F9C846);z-index:1001;transition:width 0.1s ease;}
+
+/* ===== STATUS BADGE (open/closed) ===== */
+.status-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,200,70,0.2);color:#F9C846;padding:6px 14px;border-radius:50px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;border:1px solid rgba(249,200,70,0.4);margin-bottom:16px;}
+.status-badge.closed{background:rgba(200,16,46,0.15);color:#ff6b6b;border-color:rgba(255,107,107,0.3);}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#F9C846;animation:statusPulse 2s ease-in-out infinite;}
+.status-badge.closed .status-dot{background:#ff6b6b;}
+@keyframes statusPulse{0%,100%{box-shadow:0 0 0 0 rgba(249,200,70,0.7);}50%{box-shadow:0 0 0 8px rgba(249,200,70,0);}}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ===== STATS / COUNTERS ===== */
+.stats{padding:80px 5%;background:linear-gradient(135deg,#E63946 0%,#B5232F 100%);color:white;position:relative;overflow:hidden;}
+.stats::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(212,162,74,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,255,255,0.05) 0%,transparent 50%);}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;max-width:1200px;margin:0 auto;position:relative;z-index:2;}
+.stat-item{text-align:center;}
+.stat-number{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.5rem,5vw,4rem);line-height:1;margin-bottom:8px;color:#F9C846;}
+.stat-label{font-size:0.85rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.85);}
+
+/* ===== ENGAGEMENTS ===== */
+.engagements{padding:100px 5%;background:var(--cream);}
+.engagements-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:1300px;margin:0 auto;}
+.engagement-card{text-align:center;padding:32px 20px;background:white;border-radius:16px;transition:all 0.4s ease;border:1px solid rgba(26,20,16,0.06);}
+body.dark .engagement-card{background:#1F1814;border-color:rgba(212,162,74,0.15);}
+.engagement-card:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 20px 50px rgba(26,20,16,0.12);}
+.engagement-icon{width:70px;height:70px;background:linear-gradient(135deg,#E63946,#B5232F);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.8rem;color:white;transition:transform 0.4s ease;}
+.engagement-card:hover .engagement-icon{transform:rotate(360deg) scale(1.1);}
+.engagement-card:nth-child(2) .engagement-icon{background:linear-gradient(135deg,#F9C846,#D4A024);}
+.engagement-card:nth-child(3) .engagement-icon{background:linear-gradient(135deg,#1D3557,#0D1B2A);}
+.engagement-card:nth-child(4) .engagement-icon{background:linear-gradient(135deg,#0D1B2A,#1B263B);}
+.engagement-card h4{font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;margin-bottom:8px;color:var(--charcoal);}
+body.dark .engagement-card h4{color:#FBF5E9;}
+.engagement-card p{font-size:0.85rem;color:rgba(26,20,16,0.6);line-height:1.5;}
+body.dark .engagement-card p{color:rgba(251,245,233,0.6);}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{padding:100px 5%;background:var(--cream-warm);}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1300px;margin:0 auto;}
+.testimonial{background:white;padding:32px;border-radius:16px;position:relative;border-left:4px solid #F9C846;transition:all 0.3s ease;}
+body.dark .testimonial{background:#1F1814;}
+.testimonial:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(26,20,16,0.12);}
+.testimonial::before{content:'"';position:absolute;top:-15px;left:20px;font-size:5rem;color:#E63946;font-family:'Playfair Display',serif;font-weight:900;line-height:1;opacity:0.3;}
+.testimonial-stars{color:#F9C846;font-size:1rem;margin-bottom:12px;letter-spacing:2px;}
+.testimonial-text{font-style:italic;font-size:0.95rem;color:rgba(26,20,16,0.75);line-height:1.6;margin-bottom:18px;}
+body.dark .testimonial-text{color:rgba(251,245,233,0.75);}
+.testimonial-author{display:flex;align-items:center;gap:12px;}
+.testimonial-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#E63946,#F9C846);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1rem;}
+.testimonial-name{font-weight:600;font-size:0.9rem;color:var(--charcoal);}
+body.dark .testimonial-name{color:#FBF5E9;}
+.testimonial-source{font-size:0.75rem;color:rgba(26,20,16,0.5);}
+body.dark .testimonial-source{color:rgba(251,245,233,0.5);}
+
+/* ===== SEARCH BAR ===== */
+.search-wrap{max-width:600px;margin:0 auto 30px;padding:0 5%;position:relative;}
+.search-input{width:100%;padding:16px 22px 16px 50px;background:white;border:2px solid rgba(26,20,16,0.1);border-radius:50px;font-family:inherit;font-size:0.95rem;color:var(--charcoal);transition:all 0.3s ease;}
+body.dark .search-input{background:#1F1814;color:#FBF5E9;border-color:rgba(251,245,233,0.15);}
+.search-input:focus{outline:none;border-color:#E63946;box-shadow:0 0 0 4px rgba(230,57,70,0.15);}
+.search-icon{position:absolute;left:30px;top:50%;transform:translateY(-50%);color:rgba(26,20,16,0.4);font-size:1.1rem;pointer-events:none;}
+body.dark .search-icon{color:rgba(251,245,233,0.4);}
+.no-results{text-align:center;padding:60px 5%;color:rgba(26,20,16,0.5);font-style:italic;font-size:1.1rem;display:none;}
+body.dark .no-results{color:rgba(251,245,233,0.5);}
+.no-results.show{display:block;}
+
+/* ===== CART (Panier) ===== */
+.add-btn{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:#F9C846;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#E63946;transition:all 0.3s ease;z-index:3;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+.add-btn:hover{transform:scale(1.15) rotate(90deg);background:#E63946;color:#F9C846;}
+.add-btn.added{background:#1D3557;color:#F9C846;}
+
+.cart-button{position:fixed;bottom:24px;left:24px;background:#0D1B2A;color:#F9C846;padding:14px 22px;border-radius:50px;display:none;align-items:center;gap:10px;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,0.4);z-index:998;border:2px solid #F9C846;font-family:inherit;font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:all 0.3s ease;}
+.cart-button.visible{display:flex;}
+.cart-button:hover{transform:translateY(-3px);background:#E63946;border-color:#E63946;color:white;}
+.cart-count{background:#E63946;color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;}
+.cart-button:hover .cart-count{background:#F9C846;color:#E63946;}
+
+.cart-panel{position:fixed;top:0;right:-450px;width:100%;max-width:420px;height:100vh;background:white;z-index:1002;box-shadow:-10px 0 40px rgba(0,0,0,0.2);transition:right 0.4s ease;display:flex;flex-direction:column;}
+body.dark .cart-panel{background:#1F1814;color:#FBF5E9;}
+.cart-panel.open{right:0;}
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1001;opacity:0;visibility:hidden;transition:all 0.3s ease;}
+.cart-overlay.open{opacity:1;visibility:visible;}
+.cart-header{padding:24px;border-bottom:1px solid rgba(26,20,16,0.1);display:flex;justify-content:space-between;align-items:center;background:#0D1B2A;color:#F9C846;}
+.cart-header h3{font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;}
+.cart-close{background:none;border:none;color:white;font-size:1.8rem;cursor:pointer;line-height:1;}
+.cart-items{flex:1;overflow-y:auto;padding:20px;}
+.cart-empty{text-align:center;padding:60px 20px;color:rgba(26,20,16,0.5);font-style:italic;}
+body.dark .cart-empty{color:rgba(251,245,233,0.5);}
+.cart-item{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 0;border-bottom:1px dashed rgba(26,20,16,0.1);gap:12px;}
+.cart-item-info{flex:1;}
+.cart-item-name{font-weight:600;font-size:0.95rem;margin-bottom:2px;color:var(--charcoal);}
+body.dark .cart-item-name{color:#FBF5E9;}
+.cart-item-size{font-size:0.75rem;color:rgba(26,20,16,0.5);text-transform:uppercase;letter-spacing:1px;}
+body.dark .cart-item-size{color:rgba(251,245,233,0.5);}
+.cart-item-controls{display:flex;align-items:center;gap:8px;margin-top:6px;}
+.qty-btn{width:26px;height:26px;border-radius:50%;border:1px solid rgba(26,20,16,0.2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--charcoal);transition:all 0.2s;}
+body.dark .qty-btn{color:#FBF5E9;border-color:rgba(251,245,233,0.2);}
+.qty-btn:hover{background:#E63946;color:white;border-color:#E63946;}
+.cart-item-qty{font-weight:700;min-width:24px;text-align:center;font-size:0.9rem;}
+.cart-item-price{font-weight:700;color:#E63946;font-size:1rem;white-space:nowrap;font-family:'Playfair Display',serif;}
+.cart-item-remove{background:none;border:none;color:rgba(26,20,16,0.4);cursor:pointer;font-size:1.2rem;padding:4px;line-height:1;transition:color 0.2s;}
+body.dark .cart-item-remove{color:rgba(251,245,233,0.4);}
+.cart-item-remove:hover{color:#E63946;}
+.cart-footer{padding:20px;border-top:1px solid rgba(26,20,16,0.1);background:rgba(251,245,233,0.5);}
+body.dark .cart-footer{background:#0F0B08;border-top-color:rgba(251,245,233,0.1);}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:1.1rem;}
+.cart-total-label{color:rgba(26,20,16,0.7);font-weight:500;}
+body.dark .cart-total-label{color:rgba(251,245,233,0.7);}
+.cart-total-value{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:#E63946;}
+.cart-call-btn{display:block;background:#E63946;color:white;padding:16px;border-radius:50px;text-align:center;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;font-size:0.95rem;box-shadow:0 6px 20px rgba(200,16,46,0.4);transition:all 0.3s ease;margin-bottom:8px;}
+.cart-call-btn:hover{background:#B5232F;transform:translateY(-2px);}
+.cart-clear{display:block;text-align:center;color:rgba(26,20,16,0.5);font-size:0.8rem;text-decoration:none;padding:8px;cursor:pointer;background:none;border:none;width:100%;font-family:inherit;}
+body.dark .cart-clear{color:rgba(251,245,233,0.5);}
+.cart-clear:hover{color:#E63946;}
+.cart-tip{font-size:0.75rem;color:rgba(26,20,16,0.5);text-align:center;font-style:italic;margin-top:6px;}
+body.dark .cart-tip{color:rgba(251,245,233,0.5);}
+
+/* ===== SIZE PICKER (mini popup) ===== */
+.size-picker{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);background:white;border-radius:16px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,0.3);z-index:10;opacity:0;visibility:hidden;transition:all 0.25s ease;width:90%;max-width:280px;}
+body.dark .size-picker{background:#2B231C;}
+.size-picker.open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1);}
+.size-picker-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;margin-bottom:14px;text-align:center;color:var(--charcoal);}
+body.dark .size-picker-title{color:#FBF5E9;}
+.size-options{display:flex;flex-direction:column;gap:8px;}
+.size-option{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;background:rgba(26,20,16,0.04);border:none;border-radius:10px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+body.dark .size-option{background:rgba(251,245,233,0.05);}
+.size-option:hover{background:#E63946;color:white;}
+.size-option:hover .size-opt-name,.size-option:hover .size-opt-cm{color:white;}
+.size-opt-info{display:flex;flex-direction:column;align-items:flex-start;}
+.size-opt-name{font-weight:700;font-size:0.95rem;color:var(--charcoal);}
+body.dark .size-opt-name{color:#FBF5E9;}
+.size-opt-cm{font-size:0.7rem;color:rgba(26,20,16,0.5);}
+body.dark .size-opt-cm{color:rgba(251,245,233,0.5);}
+.size-opt-price{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:#E63946;}
+.size-option:hover .size-opt-price{color:white;}
+
+/* ===== WHATSAPP BUTTON ===== */
+.whatsapp-float{position:fixed;bottom:104px;right:24px;background:#25D366;color:white;width:56px;height:56px;border-radius:50%;display:none;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,0.4);z-index:998;font-size:1.5rem;transition:transform 0.3s ease;}
+.whatsapp-float:hover{transform:scale(1.1);}
+
+/* ===== DARK MODE TOGGLE ===== */
+.theme-toggle{background:transparent;border:1px solid rgba(251,245,233,0.3);color:var(--cream);width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.3s ease;}
+.theme-toggle:hover{background:rgba(255,248,231,0.1);border-color:#F9C846;color:#F9C846;transform:rotate(180deg);}
+
+/* ===== HOVER 3D EFFECT ===== */
+.pizza-card{perspective:1000px;}
+.pizza-card:hover{transform:translateY(-8px) rotateX(2deg) rotateY(-2deg);}
+
+/* ===== TILTED CARD CTA APPEAR ===== */
+.pizza-card{position:relative;}
+
+/* ===== FILTER BAR STICKY ===== */
+.filters-wrap{position:sticky;top:80px;z-index:100;background:var(--cream);padding:20px 0 10px;backdrop-filter:blur(10px);}
+body.dark .filters-wrap{background:rgba(15,11,8,0.9);}
+
+/* ===== SEARCH HIGHLIGHT ===== */
+.pizza-card.hidden,.item-card.hidden{display:none;}
+.menu-category.empty{display:none;}
+
+/* ===== ABOUT IMG IN HERO BG (parallax-light) ===== */
+.hero-bg{transition:transform 0.1s ease-out;}
+
+/* ===== RESPONSIVE EXTRA ===== */
+@media(max-width:768px){.cart-button{padding:12px 18px;font-size:0.85rem;bottom:20px;left:20px;}.whatsapp-float{bottom:96px;right:20px;width:48px;height:48px;font-size:1.3rem;}.engagements-grid{grid-template-columns:repeat(2,1fr);gap:14px;}.engagement-card{padding:24px 14px;}.engagement-icon{width:54px;height:54px;font-size:1.4rem;}}
+@media(max-width:480px){.engagements-grid{grid-template-columns:1fr;}.cart-panel{max-width:100%;}}
+</style>
+</head>
+<body>
+<!-- LOADER -->
+<div class="loader" id="loader">
+<div class="loader-pizza"></div>
+<div class="loader-text">JET PIZZA</div>
+<div class="loader-subtext">Préparation en cours...</div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<nav>
+<div class="nav-logo">Jet<span>!</span></div>
+<ul class="nav-links" id="navLinks">
+<li><a href="#menu">Menu</a></li>
+<li><a href="#promos">Menus & Offres</a></li>
+<li><a href="#avis">Avis</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div style="display:flex;align-items:center;gap:12px;">
+<button class="theme-toggle" id="themeToggle" aria-label="Thème">🌙</button>
+<a href="tel:0140960101" class="nav-call">📞 01 40 96 01 01</a>
+</div>
+<button class="menu-toggle" id="menuToggle">☰</button>
+</nav>
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="hero-italian-flag"><span style="background:#E63946;"></span><span style="background:#FFFFFF;"></span><span style="background:#1D3557;"></span></div>
+<div id="statusBadge" class="status-badge"><span class="status-dot"></span><span id="statusText">Ouvert maintenant</span></div>
+<span class="hero-tag">Fast & Fresh ⚡</span>
+<h1>Jet<br>Pizza<span class="accent">— American Style —</span></h1>
+<p>Des pizzas généreuses, ultra-fraîches et livrées à toute vitesse. Le goût américain authentique au cœur d'Antony.</p>
+<div class="hero-cta">
+<a href="tel:0140960101" class="btn-primary">📞 Commander maintenant</a>
+<a href="#menu" class="btn-secondary">Voir le menu</a>
+</div>
+<div class="hero-info">
+<div class="hero-info-item">Ouvert 7/7</div>
+<div class="hero-info-item">Livraison gratuite</div>
+<div class="hero-info-item">À emporter</div>
+<div class="hero-info-item">Halal</div>
+</div>
+</div>
+</section>
+<section class="about-strip">
+<div class="about-content">
+<p class="about-quote">« Des <span class="highlight">pizzas généreuses</span>, des ingrédients ultra-frais et un service <span class="highlight">éclair</span> — c'est ça, la Jet Pizza attitude. »</p>
+<p class="about-sign">— L'équipe Jet Pizza</p>
+</div>
+</section>
+
+<!-- STATS / COMPTEURS -->
+<section class="stats reveal">
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-number" data-count="44">0</div>
+<div class="stat-label">Pizzas artisanales</div>
+</div>
+<div class="stat-item">
+<div class="stat-number" data-count="15000">0</div>
+<div class="stat-label">Clients heureux</div>
+</div>
+<div class="stat-item">
+<div class="stat-number" data-count="100" data-suffix="%">0</div>
+<div class="stat-label">Halal certifié</div>
+</div>
+<div class="stat-item">
+<div class="stat-number" data-count="7" data-suffix="/7">0</div>
+<div class="stat-label">Toujours ouvert</div>
+</div>
+</div>
+</section>
+
+<!-- ENGAGEMENTS -->
+<section class="engagements">
+<div class="section-title reveal">
+<span class="section-tag">nos valeurs</span>
+<h2>Nos <em>engagements</em></h2>
+</div>
+<div class="engagements-grid">
+<div class="engagement-card reveal"><div class="engagement-icon">🍕</div><h4>Pizzas généreuses</h4><p>Une garniture XXL américaine pour le bonheur de vos papilles</p></div>
+<div class="engagement-card reveal"><div class="engagement-icon">⚡</div><h4>Livraison éclair</h4><p>Votre commande en un temps record, comme un jet supersonique</p></div>
+<div class="engagement-card reveal"><div class="engagement-icon">✓</div><h4>100% Halal</h4><p>Certifié et garanti, sans compromis sur la qualité</p></div>
+<div class="engagement-card reveal"><div class="engagement-icon">🚀</div><h4>Livraison gratuite</h4><p>Chez vous en moins de temps qu'il n'en faut pour le dire</p></div>
+</div>
+</section>
+
+<section class="menu-section" id="menu">
+<div class="section-title">
+<span class="section-tag">la carte</span>
+<h2>Notre <em>menu</em></h2>
+</div>
+<div class="search-wrap">
+<span class="search-icon">🔍</span>
+<input type="text" class="search-input" id="searchInput" placeholder="Rechercher une pizza, un ingrédient... (ex: saumon, chèvre)">
+</div>
+<div class="filters">
+<button class="filter-btn active" data-filter="all">Tout</button>
+<button class="filter-btn" data-filter="tomate">Pizzas tomate</button>
+<button class="filter-btn" data-filter="creme">Pizzas crème</button>
+<button class="filter-btn" data-filter="salades">Salades</button>
+<button class="filter-btn" data-filter="pates">Pâtes</button>
+<button class="filter-btn" data-filter="texmex">Tex-Mex</button>
+<button class="filter-btn" data-filter="autres">Panizza & Escalopes</button>
+<button class="filter-btn" data-filter="boissons">Boissons & Desserts</button>
+</div>
+<div class="no-results" id="noResults">Aucun résultat trouvé. Essayez avec un autre mot-clé !</div>
+<div class="menu-category" data-category="tomate"><div class="category-header"><h3>Pizzas base tomate</h3><span class="badge">+ Mozzarella</span><div class="line"></div></div><div class="info-box"><div class="info-box-icon">📏</div><div class="info-box-text"><strong>Trois tailles disponibles</strong><p>Junior 26cm · Sénior 31cm · Méga 40cm — pour tous les appétits</p></div></div><div class="pizzas-grid"><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/margherita.jpg" alt="Margherita" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Margherita</div><div class="pizza-desc">Tomate, mozzarella</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">8,50€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">12,00€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">17,00€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/regina.jpg" alt="Régina" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Régina</div><div class="pizza-desc">Jambon, champignons</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">14,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">21,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/calzone.jpg" alt="Calzone" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Calzone</div><div class="pizza-desc">Soufflée, jambon, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">14,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">21,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/campione.jpg" alt="Campione" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Campione</div><div class="pizza-desc">Viande hachée, champignons, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">14,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">21,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/paysanne.jpg" alt="Paysanne" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Paysanne</div><div class="pizza-desc">Lardons, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">14,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">21,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/napoli.jpg" alt="Napoli" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Napoli</div><div class="pizza-desc">Viande hachée, oignons, chèvre, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/orientale.jpg" alt="Orientale" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Orientale</div><div class="pizza-desc">Double merguez, poivrons, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/thon.jpg" alt="Thon" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Thon</div><div class="pizza-desc">Thon, oignons, olives</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/texas.jpg" alt="Texas" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Texas</div><div class="pizza-desc">Viande hachée, oignons, chorizo</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/fjitas.jpg" alt="Fjitas" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Fjitas</div><div class="pizza-desc">Poulet, oignons, poivrons, ail</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/4fromages.jpg" alt="4 Fromages" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">4 Fromages</div><div class="pizza-desc">Bleu, brie, parmesan</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/4saisons.jpg" alt="4 Saisons" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">4 Saisons</div><div class="pizza-desc">Jambon, champignons, artichauts, poivrons, olives</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/mexicaine.jpg" alt="Mexicaine" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Mexicaine</div><div class="pizza-desc">Viande hachée, merguez, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/boursin.jpg" alt="Boursin" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Boursin</div><div class="pizza-desc">Bœuf haché, Boursin, pommes de terre</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/napolitaine.jpg" alt="Napolitaine" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Napolitaine</div><div class="pizza-desc">Anchois, câpres, olives</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/royale.jpg" alt="Royale" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Royale</div><div class="pizza-desc">Viande hachée, merguez, poulet</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/fruitsdemer.jpg" alt="Fruits de Mer" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Fruits de Mer</div><div class="pizza-desc">Fruits de mer, ail, persil</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/4jambons.jpg" alt="4 Jambons" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">4 Jambons</div><div class="pizza-desc">Jambon, lardons, chorizo, bacon</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/sanpietro.jpg" alt="San Pietro" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">San Pietro</div><div class="pizza-desc">Jambon, merguez, chorizo, poivrons, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/raclette.jpg" alt="Raclette" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Raclette</div><div class="pizza-desc">Champignons, lardons, raclette</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/formaggi.jpg" alt="Formaggi" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Formaggi</div><div class="pizza-desc">Chèvre, reblochon, roquefort, parmesan</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/palermo.jpg" alt="Palermo" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Palermo</div><div class="pizza-desc">Poulet, bœuf haché, merguez, piment vert, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/hawaienne.jpg" alt="Hawaïenne" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Hawaïenne</div><div class="pizza-desc">Jambon, ananas, tomates cerises</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/italienne.jpg" alt="Italienne" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Italienne</div><div class="pizza-desc">Jambon, tomates cerises, roquette, olives, parmesan</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/barbecue.jpg" alt="Barbecue" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Barbecue</div><div class="pizza-desc">Sauce barbecue, bœuf haché, merguez, chorizo, poivrons</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/sicilienne.jpg" alt="Sicilienne" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Sicilienne</div><div class="pizza-desc">Bœuf haché, pommes de terre, oignons, tomates cerises</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/vegetarienne.jpg" alt="Végétarienne" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Végétarienne</div><div class="pizza-desc">Artichauts, poivrons, aubergines, champignons, oignons, olives</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge ">Tomate</span><img src="images/zarzisienne.jpg" alt="Zarzisienne" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Zarzisienne</div><div class="pizza-desc">Champignons, thon, poivrons, oignons, olives, œuf, aubergines, piments</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div></div></div><div class="menu-category" data-category="creme"><div class="category-header"><h3>Pizzas base crème fraîche</h3><span class="badge">+ Mozzarella</span><div class="line"></div></div><div class="pizzas-grid"><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/rimini.jpg" alt="Rimini" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Rimini</div><div class="pizza-desc">Poulet, gorgonzola, champignons</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/milano.jpg" alt="Milano" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Milano</div><div class="pizza-desc">Lardons, pommes de terre, oignons, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/sardaigna.jpg" alt="Sardaigna" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Sardaigna</div><div class="pizza-desc">Bleu, brie, parmesan</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/lorraine.jpg" alt="Lorraine" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Lorraine</div><div class="pizza-desc">Jambon, champignons, oignons, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/bari.jpg" alt="Bari" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Bari</div><div class="pizza-desc">Champignons, chèvre, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">15,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">22,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/chicken.jpg" alt="Chicken" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Chicken</div><div class="pizza-desc">Poulet, pommes de terre, oignons</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/tartiflette.jpg" alt="Tartiflette" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Tartiflette</div><div class="pizza-desc">Pommes de terre, reblochon, lardons</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/delcapo.jpg" alt="Del Capo" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Del Capo</div><div class="pizza-desc">Pommes de terre, jambon, brie</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/florentine.jpg" alt="Florentine" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Florentine</div><div class="pizza-desc">Lardons, oignons, chèvre, roquette</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="images/chevremiel.jpg" alt="Chèvre Miel" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Chèvre Miel</div><div class="pizza-desc">Chèvre, miel</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="https://images.unsplash.com/photo-1601924582970-9238bcb495d9?w=600&q=80" alt="Indienne" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Indienne</div><div class="pizza-desc">Curry, poulet, pommes de terre, poivrons</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="https://images.unsplash.com/photo-1548369937-47519962c11a?w=600&q=80" alt="5 Fromages" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">5 Fromages</div><div class="pizza-desc">Chèvre, roquefort, parmesan, reblochon</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="https://images.unsplash.com/photo-1576278287601-bee21d18f0bd?w=600&q=80" alt="Norvégienne" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Norvégienne</div><div class="pizza-desc">Saumon fumé, citron</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="https://images.unsplash.com/photo-1589840700256-41c5d84af80d?w=600&q=80" alt="Gourmande" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Gourmande</div><div class="pizza-desc">Jambon, viande hachée, lardons, oignons, œuf</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge cream">Crème</span><img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600&q=80" alt="Blanche Neige" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Blanche Neige</div><div class="pizza-desc">Champignons, bœuf haché, pommes de terre, chèvre</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div><div class="pizza-card"><div class="pizza-image"><span class="pizza-badge signature">⭐ Signature</span><img src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=600&q=80" alt="Jet Spéciale" loading="lazy"></div><div class="pizza-content"><div class="pizza-name">Jet Spéciale</div><div class="pizza-desc">Lardons, pommes de terre, oignons, œuf — la signature de Jet Pizza</div><div class="pizza-prices"><div class="price-item"><span class="price-size">Junior</span><span class="price-cm">26cm</span><span class="price-val">10,00€</span></div><div class="price-item"><span class="price-size">Sénior</span><span class="price-cm">31cm</span><span class="price-val">16,90€</span></div><div class="price-item"><span class="price-size">Méga</span><span class="price-cm">40cm</span><span class="price-val">23,90€</span></div></div></div></div></div><div class="info-box" style="margin-top: 50px;"><div class="info-box-icon">🎨</div><div class="info-box-text"><strong>Composez votre pizza</strong><p>Base tomate ou crème fraîche · Junior 8,50€ / Sénior 12,00€ / Méga 17,50€<br>Ingrédients : 1€ (Junior) · 1,50€ (Sénior) · 2€ (Méga) — Légumes, viandes, poissons, fromages, fruits</p></div></div></div><div class="menu-category" data-category="salades"><div class="category-header"><h3>Salades</h3><span class="badge">6,90€</span><div class="line"></div></div><p style="margin-bottom:30px;color:rgba(26,20,16,0.6);font-style:italic;max-width:700px;">Garnies de mesclun et tomates cerises, servies avec pain et sauce.</p><div class="items-grid"><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?w=500&q=80" alt="Chèvre chaud" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Chèvre chaud</div><div class="item-price">6,90€</div></div><div class="item-desc">Chèvre, croûtons, champignons</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80" alt="Norvégienne" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Norvégienne</div><div class="item-price">6,90€</div></div><div class="item-desc">Saumon, citron</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&q=80" alt="Royale" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Royale</div><div class="item-price">6,90€</div></div><div class="item-desc">Chèvre, croûtons, lardons chauds</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=500&q=80" alt="Niçoise" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Niçoise</div><div class="item-price">6,90€</div></div><div class="item-desc">Thon, pommes de terre, œuf, anchois, olives</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80" alt="Poulet" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Poulet</div><div class="item-price">6,90€</div></div><div class="item-desc">Poulet, emmental, maïs, œuf</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1572441713132-c542fc4fe282?w=500&q=80" alt="Italienne" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Italienne</div><div class="item-price">6,90€</div></div><div class="item-desc">Artichauts, courgettes marinées, tomates cerises, oignons rouges, copeaux de parmesan</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80" alt="Méditerranéenne" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Méditerranéenne</div><div class="item-price">6,90€</div></div><div class="item-desc">Thon, aubergines, courgettes marinées, maïs, mozzarella fraîche</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=500&q=80" alt="Saison" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Saison</div><div class="item-price">3,00€</div></div><div class="item-desc">Salade, tomates et olives</div></div></div></div></div><div class="menu-category" data-category="pates"><div class="category-header"><h3>Pâtes</h3><span class="badge">8,90€</span><div class="line"></div></div><p style="margin-bottom:30px;color:rgba(26,20,16,0.6);font-style:italic;max-width:700px;">Sauces élaborées par notre chef, servies avec parmesan. Au choix : Tagliatelle ou Rigatoni.</p><div class="items-grid"><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?w=500&q=80" alt="Saumon" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Saumon</div><div class="item-price">8,90€</div></div><div class="item-desc">Crème fraîche, saumon</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=500&q=80" alt="Carbonara" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Carbonara</div><div class="item-price">8,90€</div></div><div class="item-desc">Lardons fumés, crème fraîche, jaune d'œuf</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1598866594230-a7c12756260f?w=500&q=80" alt="Bolognaise" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Bolognaise</div><div class="item-price">8,90€</div></div><div class="item-desc">Bœuf haché, sauce tomate</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1611270629569-8b357cb88da9?w=500&q=80" alt="4 Fromages" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">4 Fromages</div><div class="item-price">8,90€</div></div><div class="item-desc">Chèvre, reblochon, roquefort, parmesan</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=500&q=80" alt="Arrabiata" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Arrabiata</div><div class="item-price">8,90€</div></div><div class="item-desc">Tomate, ail, piment, basilic</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=500&q=80" alt="Boscaiola" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Boscaiola</div><div class="item-price">8,90€</div></div><div class="item-desc">Tomate, lardons fumés, champignons, petits pois, crème fraîche</div></div></div></div></div><div class="menu-category" data-category="texmex"><div class="category-header"><h3>Tex-Mex</h3><span class="badge">9,90€</span><div class="line"></div></div><p style="margin-bottom:30px;color:rgba(26,20,16,0.6);font-style:italic;max-width:700px;">Servis avec frites ou potatoes.</p><div class="items-grid"><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=500&q=80" alt="Chicken Wings" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Chicken Wings</div><div class="item-price">9,90€</div></div><div class="item-desc">8 ailes de poulet épicées</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=500&q=80" alt="Nuggets" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Nuggets</div><div class="item-price">9,90€</div></div><div class="item-desc">8 bouchées de poulet pané</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1639024471283-03518883512d?w=500&q=80" alt="Onion Rings" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Onion Rings</div><div class="item-price">9,90€</div></div><div class="item-desc">10 rondelles d'oignons panées</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&q=80" alt="Calamars Fritti" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Calamars Fritti</div><div class="item-price">9,90€</div></div><div class="item-desc">10 beignets de calamars</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1531749668029-2db88e4276c7?w=500&q=80" alt="Mozzarella Sticks" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Mozzarella Sticks</div><div class="item-price">9,90€</div></div><div class="item-desc">7 bâtonnets de mozzarella panés</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=500&q=80" alt="Bouchées Camembert" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Bouchées Camembert</div><div class="item-price">9,90€</div></div><div class="item-desc">8 camemberts panés</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1601000938259-9e92002320b2?w=500&q=80" alt="Jalapeños" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Jalapeños</div><div class="item-price">9,90€</div></div><div class="item-desc">8 piments farcis au fromage</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1608039755401-742074f0548d?w=500&q=80" alt="Mix Mexico" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Mix Mexico</div><div class="item-price">9,90€</div></div><div class="item-desc">Assortiment Tex-Mex : 2 nuggets, 2 wings, 2 onion rings, 2 mozzarella sticks, 1 jalapeños, 2 calamars fritti</div></div></div></div></div><div class="menu-category" data-category="autres"><div class="category-header"><h3>Panizza & Escalopes</h3><div class="line"></div></div><div class="items-grid"><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=500&q=80" alt="Panizza" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Panizza</div><div class="item-price">5,90€</div></div><div class="item-desc">Pain maison garni, sauce tomate et mozzarella, 1 ingrédient au choix : thon, saumon, jambon, poulet, 4 fromages, champignons, viande hachée, poivrons, oignons, pommes de terre. Garniture supp. +1€</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?w=500&q=80" alt="Escalope Normande" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Escalope Normande</div><div class="item-price">10,90€</div></div><div class="item-desc">Crème fraîche, champignons. Servie avec frites ou pâtes</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=500&q=80" alt="Escalope Milanaise" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Escalope Milanaise</div><div class="item-price">10,90€</div></div><div class="item-desc">Panée, citron. Servie avec frites ou pâtes</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&q=80" alt="Escalope Bolognaise" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Escalope Bolognaise</div><div class="item-price">10,90€</div></div><div class="item-desc">Sauce tomate, bœuf haché. Servie avec frites ou pâtes</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&q=80" alt="Escalope Boscaiola" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Escalope Boscaiola</div><div class="item-price">10,90€</div></div><div class="item-desc">Crème fraîche, lardons, champignons. Servie avec frites ou pâtes</div></div></div></div></div><div class="menu-category" data-category="boissons"><div class="category-header"><h3>Boissons & Desserts</h3><div class="line"></div></div><div class="items-grid"><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?w=500&q=80" alt="Sodas 33cl" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Sodas 33cl</div><div class="item-price">1,50€</div></div><div class="item-desc">Coca, Coca Light, Oasis, Fanta, Orangina, 7up, Mojito</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&q=80" alt="Sodas Maxi" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Sodas Maxi</div><div class="item-price">3,00€</div></div><div class="item-desc">Coca, Fanta, Orangina</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500&q=80" alt="Soda 2L" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Soda 2L</div><div class="item-price">3,50€</div></div><div class="item-desc">Oasis</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1544252890-c3e95e867f30?w=500&q=80" alt="Eaux 33cl" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Eaux 33cl</div><div class="item-price">1,50€</div></div><div class="item-desc">Perrier</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1488900128323-21503983a07e?w=500&q=80" alt="Glaces Häagen-Dazs" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Glaces Häagen-Dazs</div><div class="item-price">3,90€</div></div><div class="item-desc">Pot 95ml — 3,90€ · Pot 460ml — 7,90€. Demandez nos parfums disponibles</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=500&q=80" alt="Tiramisu 🏠" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Tiramisu 🏠</div><div class="item-price">3,90€</div></div><div class="item-desc">Spéculoos ou chocolat — Fait maison</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&q=80" alt="Mousse au chocolat 🏠" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Mousse au chocolat 🏠</div><div class="item-price">3,90€</div></div><div class="item-desc">Fait maison</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&q=80" alt="Panna Cotta 🏠" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Panna Cotta 🏠</div><div class="item-price">3,90€</div></div><div class="item-desc">Fait maison</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&q=80" alt="Brownies" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Brownies</div><div class="item-price">3,00€</div></div><div class="item-desc"></div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1535920527002-b35e96722eb9?w=500&q=80" alt="Tarte aux pommes" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Tarte aux pommes</div><div class="item-price">3,00€</div></div><div class="item-desc"></div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=500&q=80" alt="Tarte au citron" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Tarte au citron</div><div class="item-price">3,00€</div></div><div class="item-desc"></div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500&q=80" alt="Tarte aux Daims" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Tarte aux Daims</div><div class="item-price">3,00€</div></div><div class="item-desc"></div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1488477304112-4944851de03d?w=500&q=80" alt="Salade de fruits" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Salade de fruits</div><div class="item-price">3,00€</div></div><div class="item-desc"></div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&q=80" alt="Fromage blanc" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Fromage blanc</div><div class="item-price">3,00€</div></div><div class="item-desc">Nature ou coulis fraise</div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1488900128323-21503983a07e?w=500&q=80" alt="Yaourt Activia" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Yaourt Activia</div><div class="item-price">2,50€</div></div><div class="item-desc"></div></div></div><div class="item-card"><div class="item-image"><img src="https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=500&q=80" alt="Compote de fruit" loading="lazy"></div><div class="item-content"><div class="item-header"><div class="item-name">Compote de fruit</div><div class="item-price">1,50€</div></div><div class="item-desc"></div></div></div></div></div>
+</section>
+<section class="promos" id="promos">
+<div class="promos-content">
+<div class="section-title"><span class="section-tag">faites des économies</span><h2>Nos <em>menus</em></h2></div>
+<div class="menus-grid">
+<div class="menu-card"><div class="menu-card-name">Menu</div><div class="menu-card-title">Trio</div><div class="menu-card-desc">3 pizzas Junior au choix<br>+ 1 Coca Maxi</div><div class="menu-card-price">23<small>,90€</small></div></div>
+<div class="menu-card"><div class="menu-card-name">Menu</div><div class="menu-card-title">Sénior</div><div class="menu-card-desc">2 pizzas Sénior au choix<br>+ 1 Coca Maxi</div><div class="menu-card-price">26<small>,90€</small></div></div>
+<div class="menu-card"><div class="menu-card-name">Menu</div><div class="menu-card-title">Family</div><div class="menu-card-desc">2 pizzas Méga + 6 wings ou 6 nuggets + 1 Coca Maxi</div><div class="menu-card-price">39<small>,90€</small></div></div>
+<div class="menu-card"><div class="menu-card-name">Menu</div><div class="menu-card-title">Bambino</div><div class="menu-card-desc">1 mini-pizza ou 6 nuggets-frites + compote + Capri Sun + un cadeau !</div><div class="menu-card-price">6<small>,90€</small></div></div>
+</div>
+<h3 style="text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:2rem;margin:50px 0 30px;color:var(--cream);">Menus <em style="color:var(--gold);">Midi</em></h3>
+<div class="menus-grid">
+<div class="menu-card"><div class="menu-card-title" style="font-size:1.4rem;">Pizza</div><div class="menu-card-desc">1 pizza Junior au choix + 1 boisson 33cl + 1 dessert</div><div class="menu-card-price">8<small>,90€</small></div></div>
+<div class="menu-card"><div class="menu-card-title" style="font-size:1.4rem;">Pasta</div><div class="menu-card-desc">1 plat de pâtes au choix + 1 boisson 33cl + 1 dessert</div><div class="menu-card-price">8<small>,90€</small></div></div>
+<div class="menu-card"><div class="menu-card-title" style="font-size:1.4rem;">Salade</div><div class="menu-card-desc">1 salade au choix + 1 boisson 33cl + 1 dessert</div><div class="menu-card-price">8<small>,90€</small></div></div>
+<div class="menu-card"><div class="menu-card-title" style="font-size:1.4rem;">Panizza</div><div class="menu-card-desc">1 panizza + 1 boisson 33cl + 1 dessert</div><div class="menu-card-price">8<small>,90€</small></div></div>
+<div class="menu-card"><div class="menu-card-title" style="font-size:1.4rem;">Tex-Mex</div><div class="menu-card-desc">8 wings + potatoes + 1 boisson 33cl + 1 dessert</div><div class="menu-card-price">9<small>,90€</small></div></div>
+<div class="menu-card"><div class="menu-card-title" style="font-size:1.4rem;">Escalope</div><div class="menu-card-desc">1 plat d'escalope au choix + 1 boisson 33cl + 1 dessert</div><div class="menu-card-price">9<small>,90€</small></div></div>
+</div>
+<div class="promo-banners" style="margin-top:50px;">
+<div class="promo-banner"><h4>À emporter</h4><p>1 pizza achetée = <span>la 2ème offerte</span></p><small>Valable sur Sénior et Méga sauf Margherita, prix identique ou inférieur</small></div>
+<div class="promo-banner green"><h4>En livraison</h4><p>2 pizzas achetées = <span>la 3ème offerte</span></p><small>Valable sur Sénior et Méga sauf Margherita, prix identique ou inférieur</small></div>
+</div>
+</div>
+</section>
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="avis">
+<div class="section-title reveal">
+<span class="section-tag">ils nous adorent</span>
+<h2>Avis <em>clients</em></h2>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial reveal">
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">Les meilleures pizzas d'Antony ! La pâte est incroyable, les ingrédients sont super frais. La pizza Jet Spéciale est ma préférée, je recommande à 200%.</div>
+<div class="testimonial-author"><div class="testimonial-avatar">M</div><div><div class="testimonial-name">Mohamed K.</div><div class="testimonial-source">Avis Google</div></div></div>
+</div>
+<div class="testimonial reveal">
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">Service au top, livraison ultra rapide et la pizza est arrivée encore chaude ! Le menu Family est parfait pour le soir en famille. On commande très souvent.</div>
+<div class="testimonial-author"><div class="testimonial-avatar">S</div><div><div class="testimonial-name">Sarah B.</div><div class="testimonial-source">Avis Google</div></div></div>
+</div>
+<div class="testimonial reveal">
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">Je viens de Châtenay-Malabry exprès pour leurs pizzas ! Goût authentique italien, prix corrects et l'équipe est super sympa. La 4 fromages est divine.</div>
+<div class="testimonial-author"><div class="testimonial-avatar">T</div><div><div class="testimonial-name">Thomas L.</div><div class="testimonial-source">Avis Google</div></div></div>
+</div>
+<div class="testimonial reveal">
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">Pâte fine, croustillante, garniture généreuse. Les desserts maison comme le tiramisu sont une tuerie. Le rapport qualité-prix est imbattable !</div>
+<div class="testimonial-author"><div class="testimonial-avatar">A</div><div><div class="testimonial-name">Amel R.</div><div class="testimonial-source">Avis Google</div></div></div>
+</div>
+<div class="testimonial reveal">
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">Ma pizzeria préférée à Antony, sans hésitation. Le rapport quantité-prix est imbattable. Mention spéciale pour la pizza BBQ et la Royale !</div>
+<div class="testimonial-author"><div class="testimonial-avatar">J</div><div><div class="testimonial-name">Julien D.</div><div class="testimonial-source">Avis Google</div></div></div>
+</div>
+<div class="testimonial reveal">
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">Halal, qualité au rendez-vous, et l'offre 2 achetées = 3ème offerte est imbattable. Je vous remercie pour votre travail, c'est un vrai plaisir.</div>
+<div class="testimonial-author"><div class="testimonial-avatar">Y</div><div><div class="testimonial-name">Yasmine M.</div><div class="testimonial-source">Avis Google</div></div></div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="section-title">
+<span class="section-tag">on vous attend</span>
+<h2>Nous <em>trouver</em></h2>
+</div>
+<div class="contact-grid">
+<div class="contact-card">
+<div class="contact-icon">📍</div>
+<h3>Adresse</h3>
+<p>36 Rue Mirabeau<br>92160 Antony</p>
+<a href="https://maps.google.com/?q=36+Rue+Mirabeau+92160+Antony" target="_blank" rel="noopener">Itinéraire →</a>
+</div>
+<div class="contact-card">
+<div class="contact-icon">🕐</div>
+<h3>Horaires</h3>
+<p>Du lundi au samedi<br>11h00 — 14h30<br>18h00 — 23h00<br><em>Fermé dimanche matin</em></p>
+</div>
+<div class="contact-card">
+<div class="contact-icon">🛵</div>
+<h3>Livraison</h3>
+<p>Livraison <strong>gratuite</strong> à domicile<br>Minimum de commande : 5€</p>
+<a href="tel:0140960101">Commander →</a>
+</div>
+</div>
+<div class="big-call">
+<h3>Une envie de pizza ?</h3>
+<a href="tel:0140960101" class="phone-number">01 40 96 01 01</a>
+<p>Appelez directement — Commande à emporter ou en livraison</p>
+</div>
+
+<div style="max-width:1100px;margin:50px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(26,20,16,0.15);">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9!2d2.2989!3d48.7536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzYgUnVlIE1pcmFiZWF1LCA5MjE2MCBBbnRvbnk!5e0!3m2!1sfr!2sfr!4v1700000000000" width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Jet Pizza - 36 Rue Mirabeau, Antony"></iframe>
+</div>
+</section>
+<footer>
+<div class="footer-logo">Jet<span>!</span> Pizza</div>
+<div class="footer-tag">Fast · Fresh · Furiously Good</div>
+<div class="footer-info">
+<span>📍 36 Rue Mirabeau, 92160 Antony</span>
+<span>📞 01 40 96 01 01</span>
+<span>🕐 7/7 · 11h-14h30 / 18h-23h</span>
+</div>
+<div>
+<span class="halal-badge">✓ HALAL</span>
+<span class="halal-badge" style="background:var(--rosso);">Livraison gratuite</span>
+</div>
+<div class="footer-bottom">© 2026 Jet Pizza · American Style Pizza · Tous droits réservés</div>
+</footer>
+<a href="tel:0140960101" class="floating-call" aria-label="Appeler">📞</a>
+<a href="https://wa.me/33140960101?text=Bonjour%20Jet%20Pizza%2C%20je%20souhaiterais%20passer%20commande" target="_blank" rel="noopener" class="whatsapp-float" id="whatsappBtn" aria-label="WhatsApp">💬</a>
+
+<!-- CART BUTTON -->
+<button class="cart-button" id="cartBtn">🛒 <span>Mon panier</span> <span class="cart-count" id="cartCount">0</span></button>
+
+<!-- CART OVERLAY & PANEL -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-panel" id="cartPanel">
+<div class="cart-header">
+<h3>🛒 Ma sélection</h3>
+<button class="cart-close" id="cartClose">×</button>
+</div>
+<div class="cart-items" id="cartItems">
+<div class="cart-empty">Votre panier est vide.<br><br>Sélectionnez des pizzas pour préparer votre commande !</div>
+</div>
+<div class="cart-footer">
+<div class="cart-total"><span class="cart-total-label">Total estimé</span><span class="cart-total-value" id="cartTotal">0,00€</span></div>
+<a href="tel:0140960101" class="cart-call-btn" id="cartCallBtn">📞 Appeler pour commander</a>
+<button class="cart-clear" id="cartClear">Vider le panier</button>
+<div class="cart-tip">💡 Cliquez sur le bouton "Appeler" puis dictez votre commande</div>
+</div>
+</div>
+
+<!-- SIZE PICKER (will be moved with JS to active card) -->
+<div class="size-picker" id="sizePicker">
+<div class="size-picker-title" id="sizePickerTitle">Choisissez la taille</div>
+<div class="size-options" id="sizeOptions"></div>
+</div>
+<script>
+// ===== LOADER =====
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');},800);});
+
+// ===== PROGRESS BAR =====
+const progressBar=document.getElementById('progressBar');
+window.addEventListener('scroll',()=>{const scrolled=(window.pageYOffset/(document.documentElement.scrollHeight-window.innerHeight))*100;progressBar.style.width=scrolled+'%';});
+
+// ===== STATUS OUVERT/FERMÉ (en temps réel) =====
+function updateStatus(){
+  const now=new Date();
+  const day=now.getDay(); // 0=dimanche
+  const h=now.getHours();
+  const m=now.getMinutes();
+  const time=h*60+m;
+  // Horaires : lun-sam 11h-14h30 et 18h-23h, dim 18h-23h seulement
+  let open=false;
+  if(day===0){ // dimanche : seulement le soir
+    if(time>=18*60 && time<23*60) open=true;
+  }else{ // lun-sam
+    if((time>=11*60 && time<14.5*60) || (time>=18*60 && time<23*60)) open=true;
+  }
+  const badge=document.getElementById('statusBadge');
+  const text=document.getElementById('statusText');
+  if(open){badge.classList.remove('closed');text.textContent='Ouvert maintenant';}
+  else{badge.classList.add('closed');text.textContent='Fermé · Ouvre bientôt';}
+}
+updateStatus();
+setInterval(updateStatus,60000); // actualise chaque minute
+
+// ===== NAV MOBILE =====
+const menuToggle=document.getElementById('menuToggle');
+const navLinks=document.getElementById('navLinks');
+if(menuToggle){menuToggle.addEventListener('click',()=>{navLinks.classList.toggle('open');});}
+document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>navLinks.classList.remove('open'));});
+
+// ===== HIDE NAV ON SCROLL DOWN =====
+let lastScroll=0;
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{const cs=window.pageYOffset;if(cs>200&&cs>lastScroll){nav.style.transform='translateY(-100%)';}else{nav.style.transform='translateY(0)';}lastScroll=cs;});
+
+// ===== DARK MODE TOGGLE =====
+const themeToggle=document.getElementById('themeToggle');
+if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark');themeToggle.textContent='☀️';}
+themeToggle.addEventListener('click',()=>{document.body.classList.toggle('dark');const isDark=document.body.classList.contains('dark');themeToggle.textContent=isDark?'☀️':'🌙';localStorage.setItem('theme',isDark?'dark':'light');});
+
+// ===== SCROLL REVEAL =====
+const revealObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+// Auto-add reveal class to all pizza-cards & item-cards
+document.querySelectorAll('.pizza-card,.item-card,.menu-card,.contact-card').forEach(el=>{el.classList.add('reveal');revealObs.observe(el);});
+
+// ===== STAT COUNTERS =====
+const statObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const target=parseInt(el.dataset.count);const suffix=el.dataset.suffix||'';const duration=2000;const start=performance.now();function update(now){const elapsed=now-start;const progress=Math.min(elapsed/duration,1);const eased=1-Math.pow(1-progress,3);const current=Math.floor(eased*target);el.textContent=current.toLocaleString('fr-FR')+suffix;if(progress<1)requestAnimationFrame(update);else el.textContent=target.toLocaleString('fr-FR')+suffix;}requestAnimationFrame(update);statObs.unobserve(el);}});},{threshold:0.5});
+document.querySelectorAll('.stat-number').forEach(el=>statObs.observe(el));
+
+// ===== HERO PARALLAX (léger) =====
+const heroBg=document.querySelector('.hero-bg');
+window.addEventListener('scroll',()=>{const y=window.pageYOffset;if(y<window.innerHeight){heroBg.style.transform=`translateY(${y*0.3}px)`;}});
+
+// ===== FILTRES MENU =====
+const filterBtns=document.querySelectorAll('.filter-btn');
+const categories=document.querySelectorAll('.menu-category');
+filterBtns.forEach(btn=>{btn.addEventListener('click',()=>{filterBtns.forEach(b=>b.classList.remove('active'));btn.classList.add('active');const filter=btn.getAttribute('data-filter');document.getElementById('searchInput').value='';document.getElementById('noResults').classList.remove('show');categories.forEach(cat=>{cat.classList.remove('empty');if(filter==='all'||cat.getAttribute('data-category')===filter){cat.style.display='block';}else{cat.style.display='none';}});document.querySelectorAll('.pizza-card,.item-card').forEach(c=>c.classList.remove('hidden'));window.scrollTo({top:document.querySelector('.menu-section').offsetTop-80,behavior:'smooth'});});});
+
+// ===== RECHERCHE =====
+const searchInput=document.getElementById('searchInput');
+const noResults=document.getElementById('noResults');
+searchInput.addEventListener('input',()=>{
+  const q=searchInput.value.toLowerCase().trim();
+  if(!q){
+    document.querySelectorAll('.pizza-card,.item-card').forEach(c=>c.classList.remove('hidden'));
+    categories.forEach(c=>c.classList.remove('empty'));
+    noResults.classList.remove('show');
+    // Reset filter to show what's active
+    const activeFilter=document.querySelector('.filter-btn.active').getAttribute('data-filter');
+    categories.forEach(cat=>{cat.style.display=(activeFilter==='all'||cat.getAttribute('data-category')===activeFilter)?'block':'none';});
+    return;
+  }
+  // Show all categories during search
+  categories.forEach(c=>{c.style.display='block';});
+  let totalVisible=0;
+  categories.forEach(cat=>{
+    let catVisible=0;
+    cat.querySelectorAll('.pizza-card,.item-card').forEach(card=>{
+      const name=(card.querySelector('.pizza-name,.item-name')?.textContent||'').toLowerCase();
+      const desc=(card.querySelector('.pizza-desc,.item-desc')?.textContent||'').toLowerCase();
+      const match=name.includes(q)||desc.includes(q);
+      card.classList.toggle('hidden',!match);
+      if(match){catVisible++;totalVisible++;}
+    });
+    cat.classList.toggle('empty',catVisible===0);
+  });
+  noResults.classList.toggle('show',totalVisible===0);
+});
+
+// ===== PANIER (CART) =====
+let cart=JSON.parse(localStorage.getItem('cart')||'[]');
+const cartBtn=document.getElementById('cartBtn');
+const cartCount=document.getElementById('cartCount');
+const cartPanel=document.getElementById('cartPanel');
+const cartOverlay=document.getElementById('cartOverlay');
+const cartClose=document.getElementById('cartClose');
+const cartItems=document.getElementById('cartItems');
+const cartTotal=document.getElementById('cartTotal');
+const cartClear=document.getElementById('cartClear');
+const cartCallBtn=document.getElementById('cartCallBtn');
+
+function parsePrice(str){return parseFloat(str.replace('€','').replace(',','.').trim())||0;}
+
+function renderCart(){
+  cartCount.textContent=cart.reduce((s,i)=>s+i.qty,0);
+  if(cart.reduce((s,i)=>s+i.qty,0)>0){cartBtn.classList.add('visible');document.getElementById('whatsappBtn').style.display='flex';}
+  else{cartBtn.classList.remove('visible');document.getElementById('whatsappBtn').style.display='none';}
+  if(cart.length===0){
+    cartItems.innerHTML='<div class="cart-empty">Votre panier est vide.<br><br>Sélectionnez des pizzas pour préparer votre commande !</div>';
+    cartTotal.textContent='0,00€';
+    return;
+  }
+  let html='';let total=0;
+  cart.forEach((item,i)=>{
+    const sub=item.price*item.qty;total+=sub;
+    html+=`<div class="cart-item">
+<div class="cart-item-info">
+<div class="cart-item-name">${item.name}</div>
+${item.size?`<div class="cart-item-size">${item.size}</div>`:''}
+<div class="cart-item-controls">
+<button class="qty-btn" onclick="changeQty(${i},-1)">−</button>
+<span class="cart-item-qty">${item.qty}</span>
+<button class="qty-btn" onclick="changeQty(${i},1)">+</button>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+<div class="cart-item-price">${sub.toFixed(2).replace('.',',')}€</div>
+<button class="cart-item-remove" onclick="removeItem(${i})" title="Retirer">×</button>
+</div>
+</div>`;
+  });
+  cartItems.innerHTML=html;
+  cartTotal.textContent=total.toFixed(2).replace('.',',')+'€';
+  localStorage.setItem('cart',JSON.stringify(cart));
+}
+
+window.changeQty=function(i,delta){cart[i].qty+=delta;if(cart[i].qty<=0)cart.splice(i,1);renderCart();};
+window.removeItem=function(i){cart.splice(i,1);renderCart();};
+
+cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');cartOverlay.classList.add('open');});
+cartClose.addEventListener('click',()=>{cartPanel.classList.remove('open');cartOverlay.classList.remove('open');});
+cartOverlay.addEventListener('click',()=>{cartPanel.classList.remove('open');cartOverlay.classList.remove('open');});
+cartClear.addEventListener('click',()=>{if(confirm('Vider le panier ?')){cart=[];renderCart();}});
+
+// Génère le SMS quand on clique pour appeler (pre-fill texte avec commande)
+cartCallBtn.addEventListener('click',(e)=>{
+  if(cart.length===0){e.preventDefault();alert('Votre panier est vide !');return;}
+  // Just call - the user will dictate. Cart is visible for reference.
+});
+
+// Add to cart for size picker
+const sizePicker=document.getElementById('sizePicker');
+const sizePickerTitle=document.getElementById('sizePickerTitle');
+const sizeOptions=document.getElementById('sizeOptions');
+let sizePickerCard=null;
+
+document.addEventListener('click',(e)=>{if(sizePicker.classList.contains('open')&&!sizePicker.contains(e.target)&&!e.target.closest('.add-btn')){closeSizePicker();}});
+
+function openSizePicker(card){
+  closeSizePicker();
+  sizePickerCard=card;
+  const name=card.querySelector('.pizza-name').textContent.replace('⭐','').trim();
+  sizePickerTitle.textContent=name;
+  const prices=card.querySelectorAll('.price-item');
+  let html='';
+  prices.forEach(p=>{
+    const size=p.querySelector('.price-size').textContent;
+    const cm=p.querySelector('.price-cm').textContent;
+    const priceStr=p.querySelector('.price-val').textContent;
+    const price=parsePrice(priceStr);
+    html+=`<button class="size-option" data-name="${name}" data-size="${size} ${cm}" data-price="${price}"><div class="size-opt-info"><span class="size-opt-name">${size}</span><span class="size-opt-cm">${cm}</span></div><span class="size-opt-price">${priceStr}</span></button>`;
+  });
+  sizeOptions.innerHTML=html;
+  card.style.position='relative';
+  card.appendChild(sizePicker);
+  setTimeout(()=>sizePicker.classList.add('open'),10);
+  // Bind clicks
+  sizeOptions.querySelectorAll('.size-option').forEach(opt=>{
+    opt.addEventListener('click',()=>{
+      addToCart({name:opt.dataset.name,size:opt.dataset.size,price:parseFloat(opt.dataset.price)});
+      closeSizePicker();
+      const btn=card.querySelector('.add-btn');
+      btn.classList.add('added');
+      btn.textContent='✓';
+      setTimeout(()=>{btn.classList.remove('added');btn.textContent='+';},1500);
+    });
+  });
+}
+
+function closeSizePicker(){sizePicker.classList.remove('open');setTimeout(()=>{if(!sizePicker.classList.contains('open'))document.body.appendChild(sizePicker);},300);}
+
+function addToCart(item){
+  const existing=cart.find(c=>c.name===item.name&&c.size===item.size);
+  if(existing){existing.qty++;}else{cart.push({...item,qty:1});}
+  renderCart();
+}
+
+// Add buttons to all pizza-cards and item-cards
+document.querySelectorAll('.pizza-card').forEach(card=>{
+  const btn=document.createElement('button');btn.className='add-btn';btn.textContent='+';btn.setAttribute('aria-label','Ajouter');
+  btn.addEventListener('click',(e)=>{e.stopPropagation();openSizePicker(card);});
+  card.querySelector('.pizza-image').appendChild(btn);
+});
+document.querySelectorAll('.item-card').forEach(card=>{
+  const priceEl=card.querySelector('.item-price');
+  if(!priceEl)return;
+  const btn=document.createElement('button');btn.className='add-btn';btn.textContent='+';btn.setAttribute('aria-label','Ajouter');
+  btn.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    const name=card.querySelector('.item-name').textContent.replace('🏠','').trim();
+    const price=parsePrice(priceEl.textContent);
+    addToCart({name,size:'',price});
+    btn.classList.add('added');btn.textContent='✓';
+    setTimeout(()=>{btn.classList.remove('added');btn.textContent='+';},1500);
+  });
+  card.querySelector('.item-image').appendChild(btn);
+});
+
+renderCart();
+
+// ===== KEYBOARD SHORTCUTS =====
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape'){
+    if(cartPanel.classList.contains('open')){cartPanel.classList.remove('open');cartOverlay.classList.remove('open');}
+    if(sizePicker.classList.contains('open')){closeSizePicker();}
+  }
+  // CMD/CTRL + K = focus search
+  if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();searchInput.focus();searchInput.scrollIntoView({behavior:'smooth',block:'center'});}
+});
+</script>
+</body>
+</html>
